@@ -11,6 +11,7 @@ public class Equipe {
 	
 	public Equipe(String nom){
 		this.nom = nom;
+		this.Joueur = new ArrayList();
 	}
 	
 	//Ajouter un joueur a l'équipe
@@ -20,7 +21,7 @@ public class Equipe {
 	
 	public int getNbPoint(){
 		int i = 0;
-		for(int y = 0; y <= this.Joueur.size(); y++){
+		for(int y = 0; y < this.Joueur.size(); y++){
 			i = i + this.Joueur.get(y).nbButTotal();
 		}
 	  return i;
@@ -35,6 +36,8 @@ public class Equipe {
 	public String toString(){
 		return this.nom;
 	}
+
+
 
 
 	

@@ -25,6 +25,9 @@ public class CreerNouveauMatch2 implements ActionListener {
 		Equipe e2 = new Equipe(this.frame.getEquipe2().getText());
 		Match m = new Match(e1, e2, Integer.parseInt(this.frame.getTemps().getText()));
 		this.frame2.setMatch(m);
+		this.frame2.setEquipe1(m.nomEquipe1());
+		this.frame2.setEquipe2(m.nomEquipe2());
+		this.frame2.pack();
 	}
 
 }

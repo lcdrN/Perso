@@ -12,8 +12,20 @@ public class Match {
 		this.temps = temps;
 	}
 	
-	public String toString(){
+	public String nomEquipe1(){
 		return this.equipe1.toString();
+	}
+	
+	public String nomEquipe2(){
+		return this.equipe2.toString();
+	}
+	
+	public int score1(){
+		return this.equipe1.getNbPoint();
+	}
+	
+	public int score2(){
+		return this.equipe2.getNbPoint();
 	}
 	
 	
