@@ -12,6 +12,7 @@ public class Equipe {
 	public Equipe(String nom){
 		this.nom = nom;
 		this.Joueur = new ArrayList();
+		this.Joueur.add(new Joueur(3));
 	}
 	
 	//Ajouter un joueur a l'équipe

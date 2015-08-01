@@ -4,12 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.LayoutManager;
 
 import javax.swing.*;
 
 import main.Equipe;
 import main.Match;
-import Controleur.ControleurNouveauMatch;
+import Controleur.ControleurOuvrir;
 
 public class MainWindows extends JFrame {
 	
@@ -17,6 +18,10 @@ public class MainWindows extends JFrame {
 	
 	private JButton nouveaumatch, addjoueur;
 	private Dimension dimButTool;
+	private ModelTable modele1, modele2;
+	
+	private Object donnees[][] = {{null, null, null, null, null}};
+	private final String[] titres = {"Numéro", "Nom", "Nombre Buts", "Nombres 2mins", "Nombre Jaune"};
 	
 	//Panel score
 	private JLabel equipe1, equipe2, score1, score2;
@@ -32,7 +37,8 @@ public class MainWindows extends JFrame {
 		dimButTool = new Dimension(200, 30);
 		
 		//Controleur
-		nouveaumatch.addActionListener(new ControleurNouveauMatch(this));
+		nouveaumatch.addActionListener(new ControleurOuvrir(this, 0));
+		addjoueur.addActionListener(new ControleurOuvrir(this, 1));
 		//
 		
 		nouveaumatch.setPreferredSize(dimButTool);
@@ -54,23 +60,34 @@ public class MainWindows extends JFrame {
 		
 		
 		
+		
 		JPanel score = new JPanel();
 		score.setLayout(new FlowLayout(FlowLayout.CENTER));
 		
-		equipe1 = new JLabel();
-		equipe1.setText(this.match.nomEquipe1() + " : ");
-		score1 = new JLabel();
-		score1.setText(Integer.toString(this.match.score1()) + "  -  ");
-		score2 = new JLabel();
-		score2.setText(Integer.toString(this.match.score2()));
-		equipe2 = new JLabel();
-		equipe2.setText(" : " + this.match.nomEquipe2());
+		
+		
+		equipe1 = new JLabel("Visiteurs : ");
+		score1 = new JLabel("0 - ");
+		score2 = new JLabel("0");
+		equipe2 = new JLabel(": Locaux");
 		
 		score.add(equipe1);
 		score.add(score1);
 		score.add(score2);
 		score.add(equipe2);
 		
+		// JTable + Panel
+		JPanel equipe1liste = new JPanel();
+		equipe1liste.setLayout(new BorderLayout());
+		JTable listeequipe1 = new JTable(this.modele1 = new ModelTable());
+		equipe1liste.add(listeequipe1.getTableHeader(), BorderLayout.NORTH);
+		equipe1liste.add(listeequipe1, BorderLayout.CENTER);
+		//
+		
+		
+		
+		
+		central.add(equipe1liste, BorderLayout.CENTER);
 		central.add(score, BorderLayout.NORTH);
 		
 		//
@@ -122,6 +139,15 @@ public class MainWindows extends JFrame {
 
 	public void setScore2(int score2) {
 		this.score2.setText(Integer.toString(score2));
+	}
+
+	public ModelTable getModele1() {
+		return modele1;
+	}
+
+	public ModelTable setModele(ModelTable modele) {
+		this.modele1 = modele;
+		return modele;
 	}
 	
 	

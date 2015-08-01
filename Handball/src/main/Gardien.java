@@ -7,7 +7,7 @@ public class Gardien extends Joueur{
 	
 	
 	public Gardien(int numero, Equipe equipe) {
-		super(numero, equipe);
+		super(numero);
 		this.nbarrets = 0;
 	}
 	

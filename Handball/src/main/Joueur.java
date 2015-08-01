@@ -11,9 +11,18 @@ public class Joueur {
 	private ArrayList cartons; //Carton jaune ; 
 	private Boolean cartonrouge;
 	
-	public Joueur(int numero, Equipe equipe){
+	public Joueur(int numero){
 		this.setNumero(numero);
+		this.tirs = new ArrayList();
+		this.faute = new ArrayList();
+		this.cartons= new ArrayList();
 	}
+	
+	public Joueur(int numero, String nom){
+		this(numero);
+		this.nom = nom;
+	}
+	
 
 	//Ajoute tir + Résultat du tir
 	public void tir(int chiffre){
@@ -28,7 +37,7 @@ public class Joueur {
 	//Retourne le nombre de but total
 	public int nbButTotal(){
 		int y = 0;
-		for(int i = 0; i <= this.tirs.size(); i++){
+		for(int i = 0; i < this.tirs.size(); i++){
 			if(this.tirs.get(i).equals(1) || this.tirs.get(i).equals(3)){
 				y++;
 			}
@@ -69,6 +78,14 @@ public class Joueur {
 
 	public void setNumero(int numero) {
 		this.numero = numero;
+	}
+	
+	public int getFautes(){
+		return this.faute.size();
+	}
+	
+	public int nbJaunes(){
+		return this.cartons.size();
 	}
 	
 	

@@ -27,6 +27,24 @@ public class Match {
 	public int score2(){
 		return this.equipe2.getNbPoint();
 	}
+
+	public Equipe getEquipe1() {
+		return equipe1;
+	}
+
+	public void setEquipe1(Equipe equipe1) {
+		this.equipe1 = equipe1;
+	}
+
+	public Equipe getEquipe2() {
+		return equipe2;
+	}
+
+	public void setEquipe2(Equipe equipe2) {
+		this.equipe2 = equipe2;
+	}
+	
+	
 	
 	
 	
